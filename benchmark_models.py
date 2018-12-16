@@ -25,7 +25,7 @@ device_name=torch.cuda.get_device_name(0)
 parser = argparse.ArgumentParser(description='PyTorch Benchmarking')
 parser.add_argument('--WARM_UP','-w', type=int,default=5, required=False, help="Num of warm up")
 parser.add_argument('--NUM_TEST','-n', type=int,default=50,required=False, help="Num of Test")
-parser.add_argument('--BATCH_SIZE','-b', type=int, default=20, required=False, help='Num of batch size')
+parser.add_argument('--BATCH_SIZE','-b', type=int, default=15, required=False, help='Num of batch size')
 parser.add_argument('--NUM_CLASSES','-c', type=int, default=1000, required=False, help='Num of class')
 parser.add_argument('--NUM_GPU','-g', type=int, default=1, required=False, help='Num of class')
 
@@ -37,7 +37,7 @@ def train(type='single'):
     """use fake image for training speed test"""
     img = Variable(torch.randn(args.BATCH_SIZE, 3, 224, 224)).cuda()
     target = Variable(torch.LongTensor(args.BATCH_SIZE).random_(args.NUM_CLASSES)).cuda()
-    criterion = nn.CrossEntropyLoss()dock
+    criterion = nn.CrossEntropyLoss()
     benchmark = {}
     for model_type in MODEL_LIST.keys():
         for model_name in MODEL_LIST[model_type]:
