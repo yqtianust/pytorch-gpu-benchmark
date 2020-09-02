@@ -26,7 +26,8 @@ MODEL_LIST = {
     models.shufflenetv2:models.shufflenetv2.__all__[1:]
 }
 
-precisions=["float","half",'double']
+# precisions=["float","half",'double']
+precisions=["float"]
 # For post-voltaic architectures, there is a possibility to use tensor-core at half precision.
 # Due to the gradient overflow problem, apex is recommended for practical use.
 device_name=str(torch.cuda.get_device_name(0))
